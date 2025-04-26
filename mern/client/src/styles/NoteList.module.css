@@ -53,9 +53,11 @@
 
 .note {
     padding: 10px;
+    transition: background 0.3s;
+    border-radius: 999px;
+
 }
 .note:hover {
     background-color: #D0E3F5;
     cursor: pointer;
-    border-radius: 999px;
 }

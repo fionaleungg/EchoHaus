@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from '../styles/UploadNotes.module.css'
-// import notebookText from '../assets/notebookText.png'
+import LogoutButton from '../signup-login/LogoutButton';
 
 function UploadNotes() {
   const [name, setName] = React.useState("");
@@ -52,13 +52,13 @@ function UploadNotes() {
           />
         </div>
 
-  
+        <LogoutButton />
         <button onClick={uploadNotes} className={styles.submitButton}>
           Submit
         </button>
       </div>
     </div>
-  );  
+  );
 }
 
 export default UploadNotes;

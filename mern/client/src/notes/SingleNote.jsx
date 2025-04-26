@@ -2,6 +2,7 @@ import React from 'react'
 import styles from '../styles/SingleNote.module.css'
 import {useNavigate} from 'react-router-dom';
 import NoteContext from './NoteContext';
+import LogoutButton from '../signup-login/LogoutButton';
 
 function SingleNote() {
   const ntx = React.useContext(NoteContext);
@@ -49,6 +50,7 @@ function SingleNote() {
             <div>You don't have any notes</div>
           }
         </div>
+        <LogoutButton />
         <button className={styles.readyButton} onClick={() => navigate("/intermission")}>
           I'm Ready!
         </button>

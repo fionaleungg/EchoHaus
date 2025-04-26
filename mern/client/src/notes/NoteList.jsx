@@ -2,6 +2,7 @@ import React from 'react'
 import styles from '../styles/NoteList.module.css'
 import {useNavigate} from 'react-router-dom';
 import NoteContext from './NoteContext';
+import LogoutButton from '../signup-login/LogoutButton';
 
 function NoteList() {
   const ntx = React.useContext(NoteContext);
@@ -49,8 +50,9 @@ function NoteList() {
           ))}
         </div>
       </div>
+      <LogoutButton />
       <button className = {styles.addButton} onClick={() => navigate("/uploadnotes")}>
-      <i class="fa-solid fa-plus"></i>
+      <i className="fa-solid fa-plus"></i>
       </button>
     </div>
   )

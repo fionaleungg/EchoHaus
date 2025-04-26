@@ -1,5 +1,6 @@
 import React from 'react'
 import {CountdownCircleTimer} from 'react-countdown-circle-timer'
+import LogoutButton from './signup-login/LogoutButton';
 
 function Timer() {
   const [complete, setComplete] = React.useState(false);
@@ -50,6 +51,7 @@ function Timer() {
         finished!
         <button>go to recall</button>
       </div>}
+      <LogoutButton />
     </>
   )
 }

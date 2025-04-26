@@ -45,9 +45,10 @@
     border-radius: 20px;
     padding: 10px 20px;
     color: black;
+    transition: background 0.3s;
   }
   
-  .notesButton {
+  .notesButton:hover, .studyButton:hover {
     background-color: #dedede;
   }
   
