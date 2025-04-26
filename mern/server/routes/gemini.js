@@ -1,6 +1,4 @@
 import express from "express";
-import db from "../db/connection.js"
-import {ObjectId} from "mongodb"
 
 import dotenv from 'dotenv'
 import 'dotenv/config';
@@ -28,10 +26,3 @@ router.post('/generate', async (req, res) => {
     res.status(500).json({ error: 'Failed to generate content' });
   }
 });
-
-
-router.get("/", async (req, res) => {
-  let collection = await db.collection("users");
-  let results = await collection.find({}).toArray();
-  res.send(results).status(200);
-})
