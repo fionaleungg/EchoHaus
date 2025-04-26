@@ -8,6 +8,7 @@ import Login from './signup-login/Login'
 import Timer from './Timer';
 import RecallContext from './recall/RecallContext'
 import RecallInput from './recall/RecallInput';
+import ForgettingCurveChart from './graph/GraphImage';
 
 function App() {
   const [currentRecall, setCurrentRecall] = React.useState("");
@@ -28,6 +29,9 @@ function App() {
           } />
           <Route path="/recall" element={
             <RecallInput />
+          } />
+          <Route path="/graph" element={
+            <ForgettingCurveChart />
           } />
         </Routes>
       </RecallContext.Provider>
