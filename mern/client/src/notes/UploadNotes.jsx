@@ -1,4 +1,6 @@
 import React from 'react'
+import styles from '../styles/UploadNotes.module.css'
+import notebookText from '../assets/notebookText.png'
 
 function UploadNotes() {
   const [name, setName] = React.useState("");
@@ -29,22 +31,34 @@ function UploadNotes() {
       })
   }
   return (
-    <>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Name your notes"
-      />
-      <input
-        type="text"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="Paste your notes here"
-      />
-      <button onClick={uploadNotes}/>
-    </>
-  )
+    <div className={styles.uploadNotes}>
+      <div className={styles.container}>
+        <h1 className={styles.title}>Upload Notes</h1>
+  
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Name your notes"
+          className={styles.nameInput}
+        />
+        
+        <div className={styles.notebook}>
+          <textarea
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            placeholder="Upload here, hitting submit will bring you to 'My Notes' page"
+            className={styles.textarea}
+          />
+        </div>
+
+  
+        <button onClick={uploadNotes} className={styles.submitButton}>
+          Submit
+        </button>
+      </div>
+    </div>
+  );  
 }
 
 export default UploadNotes;
