@@ -2,6 +2,7 @@
 import './App.css'
 import GeminiGenerator from './GeminiGenerator'
 import Landing from './signup-login/Landing'
+import Signup from './signup-login/Signup'
 import Login from './signup-login/Login'
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
     <>
       {/* <GeminiGenerator /> */}
       {/* <Landing /> */}
-      <Login />
+      <Signup />
       {/* <p className="read-the-docs">
       </p> */}
     </>
