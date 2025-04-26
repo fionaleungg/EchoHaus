@@ -5,6 +5,7 @@ import Landing from './signup-login/Landing'
 import Signup from './signup-login/Signup'
 import Login from './signup-login/Login'
 import NoteList from './notes/NoteList'
+import UploadNotes from './notes/UploadNotes'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
       {/* <Signup /> */}
       {/* <Login /> */}
       <NoteList />
+      {/* <UploadNotes/> */}
       {/* <p className="read-the-docs">
       </p> */}
     </>

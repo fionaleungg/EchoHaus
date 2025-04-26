@@ -31,7 +31,7 @@ function NoteList() {
   return (
     <>
       {notearray.map((note, index) => (
-        <div>{note.name} {note.id}</div>
+        <div key={index}>{note.name} {note.id}</div>
       ))}
     </>
   )

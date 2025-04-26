@@ -10,7 +10,7 @@ export const post = async (req) => {
   const newNote = await noteCollection.insertOne({
     name,
     text,
-    user_id: id,
+    user_id: new ObjectId(id),
     time_uploaded: now
   });
   return {id: newNote.insertedId};
