@@ -1,5 +1,5 @@
 import '../styles/Landing.css'
-import nerdImg from '../assets/notebook.png'
+import notebook from '../assets/notebook.png'
 // import {useNavigate} from 'react-router-dom';
 
 function Landing() {
@@ -8,7 +8,7 @@ function Landing() {
 //   const navigate = useNavigate();
   return (
     <div className = "landing">
-      <img src={nerdImg} />
+      <img className = "notebook" src={notebook} />
 
       <div className = "right">
         <div className = "landing-title">
@@ -19,11 +19,11 @@ function Landing() {
         <div className = "buttons">
             {/* <button className = "signin" onClick={() => navigate("/login")}> */}
             <button className = "signin">
-                SIGN IN
+                Sign In
             </button>
             {/* <button className= "signin" onClick={() => navigate("/signup")}> */}
             <button className= "signin">
-                SIGN UP
+                Sign Up
             </button>
         </div>
       </div>

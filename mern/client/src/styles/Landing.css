@@ -29,7 +29,7 @@
     color: #343a40; /* Dark gray/black text */
   }
   
-  img {
+  .notebook {
     width: 200px; /* Adjust as needed */
     height: auto;
     margin-bottom: 40px;

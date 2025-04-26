@@ -1,5 +1,7 @@
 import React from 'react';
+import styles from '../styles/Login.module.css'
 import {useNavigate} from 'react-router-dom'
+import circleLogo from '../assets/circleLogo.png'
 
 function Login() {
   const [username, setUserName] = React.useState("");
@@ -41,16 +43,19 @@ function Login() {
   // const navigate = useNavigate();
   return (
     <>
-      <div>
-          <div className = "signin-card">
-            <h1 className = "title">Sign In</h1>
-            <input name="email" className = "email" placeholder = "Email" type="email" onChange={handleInputChange}></input>
-            <input name="password" className = "password" placeholder = "Password" type="password" onChange={handleInputChange}></input>
-            {/* needs auth */}
-            <button className = "signin-button" onClick={login}>
-                SIGN IN
-            </button>
-            <h1>{username}</h1>
+      <div className = {styles.login}>
+          <div className = {styles.signin}>
+            <img className = {styles.circleLogo} src={circleLogo} />
+            <h1 className = {styles.title}>Sign In</h1>
+            <div className = {styles.content}>
+                <input name="email" className = {styles.inputfield} placeholder = "Email" type="email" onChange={handleInputChange}></input>
+                <input name="password" className = {styles.inputfield} placeholder = "Password" type="password" onChange={handleInputChange}></input>
+                {/* needs auth */}
+                <button className = {styles.SIbutton} onClick={login}>
+                    SIGN IN
+                </button>
+              </div>
+            <h1 className = {styles.deez}>{username}</h1>
           </div>
       </div>
     </>
