@@ -50,11 +50,12 @@
     color: #343a40;
     border-radius: 50px;
     padding: 12px 30px;
-    font-size: 1em;
+    font-size: 1.5em;
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-top: 10px;
     width: 100%;
+    font-weight: bold;
 }
 
 .circleLogo {

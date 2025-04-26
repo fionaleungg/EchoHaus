@@ -1,0 +1,64 @@
+/* .navbarWrapper {
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } */
+  
+  .navbarWrapper {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* super important */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.8); /* semi-transparent white */
+    backdrop-filter: blur(10px); /* optional, adds a nice blur effect */
+    height: 60px; /* your navbar height */
+    margin-top: 2%;
+  }
+  
+  .navbar {
+    background-color: #f3f1f1;
+    width: 600px;
+    height: 50px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 1;
+  }
+  
+  .studyButton, .notesButton {
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: black;
+  }
+  
+  .notesButton {
+    background-color: #dedede;
+  }
+  
+  .logo {
+    position: absolute;
+    top: -20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f3f1f1;
+    padding: 5px;
+    z-index: 2;
+  }
+  

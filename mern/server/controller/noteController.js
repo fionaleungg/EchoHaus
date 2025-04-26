@@ -10,7 +10,7 @@ export const post = async (req) => {
   const newNote = await noteCollection.insertOne({
     name,
     text,
-    user_id: id,
+    user_id: new ObjectId(id),
     time_uploaded: now
   });
   return {id: newNote.insertedId};
@@ -19,7 +19,7 @@ export const post = async (req) => {
 export const get = async (req) => {
   const {id} = req.user;
 
-  const notes = await noteCollection.find({user_id: id}).toArray();
+  const notes = await noteCollection.find({user_id: new ObjectId(id)}).toArray();
   let notearr = []
   for (const note of notes) {
     const obj = {
@@ -32,7 +32,7 @@ export const get = async (req) => {
 }
 
 export const getOne = async (req, noteid) => {
-  const single_note = await noteCollection.findOne({_id: noteid});
+  const single_note = await noteCollection.findOne({_id: new ObjectId(noteid)});
   const obj = {
     name: single_note.name,
     time_uploaded: single_note.time_uploaded,
