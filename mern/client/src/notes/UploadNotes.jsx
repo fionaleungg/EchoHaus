@@ -3,9 +3,6 @@ import React from 'react'
 function UploadNotes() {
   const [name, setName] = React.useState("");
   const [text, setText] = React.useState("");
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  }
   const uploadNotes = async (event) => {
     const token = localStorage.getItem('token');
     const content = {
@@ -24,6 +21,8 @@ function UploadNotes() {
         if (!res.ok) {
           throw res;
         }
+        setName("");
+        setText("");
       })
       .catch((error) => {
         throw(error);
