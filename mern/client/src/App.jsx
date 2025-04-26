@@ -1,15 +1,17 @@
 
 import './App.css'
 import GeminiGenerator from './GeminiGenerator'
+import Landing from './signup-login/Landing'
 
 function App() {
 
 
   return (
     <>
-      <GeminiGenerator />
-      <p className="read-the-docs">
-      </p>
+      {/* <GeminiGenerator /> */}
+      <Landing />
+      {/* <p className="read-the-docs">
+      </p> */}
     </>
   )
 }

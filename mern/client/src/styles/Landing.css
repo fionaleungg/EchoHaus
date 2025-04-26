@@ -1,0 +1,58 @@
+/* Landing.css */
+.landing {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #f8f9fa; /* Light gray background */
+    font-family: sans-serif;
+  }
+  
+  .landing-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  
+  .welcome {
+    font-size: 1.5em;
+    color: #6c757d; /* Gray text */
+    margin-bottom: 5px;
+  }
+  
+  .app-name {
+    font-size: 3em;
+    font-weight: bold;
+    color: #343a40; /* Dark gray/black text */
+  }
+  
+  img {
+    width: 200px; /* Adjust as needed */
+    height: auto;
+    margin-bottom: 40px;
+    margin-right: 20%;
+  }
+  
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .signin {
+    background-color: #e9ecef; /* Light gray button background */
+    color: #343a40; /* Dark gray/black button text */
+    border: 1px solid #ced4da; /* Light gray border */
+    border-radius: 5px;
+    padding: 12px 30px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .signin:hover {
+    background-color: #dee2e6; /* Slightly darker gray on hover */
+  }
