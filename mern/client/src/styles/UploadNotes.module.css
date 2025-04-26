@@ -1,0 +1,103 @@
+.uploadNotes {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../assets/backgroundImage.png');
+    background-size: contain; 
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 500px;
+    height: 90%;
+    /* padding: 20px; */
+  }
+  
+  .title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: black;
+  }
+  
+  .nameInput {
+    width: 100%;
+    height: 30px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 30px;
+    background-color: #E4E4E4;
+    text-align: center;
+    font-size: 16px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    color: black;
+  }
+  
+  .notebook {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 120%;
+    height: 340px;
+    /* margin-bottom: 20px; */
+    /* margin-top: 20px; */
+    background-image: url('../assets/notebookText.png');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .notebookText {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+  
+  .textarea {
+    position: relative;
+    z-index: 2;
+    width: 80%;
+    height: 50%;
+    border: none;
+    resize: none;
+    font-size: 16px;
+    outline: none;
+    background: transparent;
+    text-align: center;
+    padding: 20px;
+    margin-top: 10%;
+    color: black;
+  }
+  
+  
+  .submitButton {
+    margin-top: 10px;
+    width: 150px;
+    height: 45px;
+    border: none;
+    border-radius: 30px;
+    background-color: #AFCAE4;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    color: black;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  }
+  
+  .submitButton:hover {
+    background-color: #a5bbd0;
+  }
+  

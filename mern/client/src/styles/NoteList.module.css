@@ -1,0 +1,37 @@
+.noteList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../assets/backgroundImage.png');
+    background-size: contain; 
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: black;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: bold;
+    /* margin-bottom: 2%; */
+    margin-top: 4%;
+    color: black;
+  }
+
+.notebook {
+    display: flex;
+    justify-content: center;
+    background-image: url('../assets/notebookTextList.png');
+    background-size: cover;
+    background-position: center;
+    width: 40%;
+    height: 65%;
+    margin-top: 2%;
+}
+
+.notes {
+    margin-top: 20%;
+    width: 80%;
+    text-align: center;
+}

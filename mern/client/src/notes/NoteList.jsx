@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from '../styles/NoteList.module.css'
 
 function NoteList() {
   const [notearray, setNoteArray] = React.useState([]);
@@ -29,11 +30,16 @@ function NoteList() {
   }
 
   return (
-    <>
-      {notearray.map((note, index) => (
-        <div key={index}>{note.name} {note.id}</div>
-      ))}
-    </>
+    <div className = {styles.noteList}>
+      <h1 className={styles.title}>Upload Notes</h1>
+      <div className = {styles.notebook}>
+        <div className = {styles.notes}>
+          {notearray.map((note, index) => (
+            <div key={index}>{note.name} {note.id}</div>
+          ))}
+        </div>
+      </div>
+    </div>
   )
   
 }

@@ -7,12 +7,14 @@ import Login from './signup-login/Login'
 import NoteList from './notes/NoteList'
 import UploadNotes from './notes/UploadNotes'
 import SingleNote from './notes/SingleNote'
+import NavBar from './navigation/NavBar'
 
 function App() {
 
 
   return (
     <>
+      <NavBar/>
       {/* <GeminiGenerator /> */}
       {/* <Landing /> */}
       {/* <Signup /> */}
