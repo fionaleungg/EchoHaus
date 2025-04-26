@@ -19,11 +19,11 @@ function Landing() {
         <div className = "buttons">
             {/* <button className = "signin" onClick={() => navigate("/login")}> */}
             <button className = "signin">
-                SIGN IN
+                Sign In
             </button>
             {/* <button className= "signin" onClick={() => navigate("/signup")}> */}
             <button className= "signin">
-                SIGN UP
+                Sign Up
             </button>
         </div>
       </div>
