@@ -63,7 +63,8 @@ function App() {
             <Route path="/feedback" element={
               <>
                 <NavBar />
-                <Feedback />
+                {/* <Feedback /> */}
+                <GeminiGenerator />
               </>
             } />
           </Routes>
