@@ -5,6 +5,10 @@ import GeminiGenerator from './GeminiGenerator'
 import Landing from './signup-login/Landing'
 import Signup from './signup-login/Signup'
 import Login from './signup-login/Login'
+import NoteList from './notes/NoteList'
+import UploadNotes from './notes/UploadNotes'
+import SingleNote from './notes/SingleNote'
+import NavBar from './navigation/NavBar'
 import Timer from './Timer';
 
 function App() {
