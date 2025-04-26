@@ -1,4 +1,4 @@
-
+import React from 'react';
 import './App.css'
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import GeminiGenerator from './GeminiGenerator'
@@ -10,24 +10,21 @@ import UploadNotes from './notes/UploadNotes'
 import SingleNote from './notes/SingleNote'
 import NavBar from './navigation/NavBar'
 import Timer from './Timer';
+import RecallContext from './recall/RecallContext'
+import RecallInput from './recall/RecallInput';
+import ForgettingCurveChart from './graph/GraphImage';
 
 function App() {
-
+  const [currentRecall, setCurrentRecall] = React.useState("");
 
   return (
-    // <>
-    //   {/* <GeminiGenerator /> */}
-    //   <Landing />
-    //   {/* <Signup /> */}
-    //   {/* <Login /> */}
-    //   {/* <p className="read-the-docs">
-    //   </p> */}
-    // </>
-    // <UserContext.Provider value={{currentUserEmail, setUserEmail, currentUserName, setUserName}}>
-    //   <HouseContext.Provider value={{houseName, setHouseName, houseType, setHouseType}}>
-      <BrowserRouter>
+    <BrowserRouter>
+      <RecallContext.Provider value={{currentRecall, setCurrentRecall}}>
         <Routes>
           <Route path="/" element={<Landing />} />
+          <Route path="/graph" element={
+            <ForgettingCurveChart />
+          } />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/mynotes" element={
@@ -50,9 +47,8 @@ function App() {
             } />
           <Route path="/intermission" element={<Timer />} />
         </Routes>
-      </BrowserRouter>
-    //   </HouseContext.Provider>
-    // </UserContext.Provider>
+      </RecallContext.Provider>
+    </BrowserRouter>
   )
 }
 

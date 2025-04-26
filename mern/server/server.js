@@ -4,6 +4,7 @@ import auth from './routes/auth.js';
 import gemini from './routes/gemini.js';
 import user from './routes/user.js';
 import note from './routes/note.js';
+import recall from './routes/recall.js';
 
 const PORT = process.env.PORT || 5050;
 const app = express();
@@ -14,6 +15,7 @@ app.use("/api/v0/login", auth);
 app.use("/api/v0/user", user);
 app.use("/api/v0", gemini);
 app.use("/api/v0/note", note);
+app.use("/api/v0/recall", recall);
 
 // start the Express server
 app.listen(PORT, () => {
