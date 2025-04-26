@@ -4,7 +4,7 @@ import * as recall from '../controller/recallController.js';
 
 const router = express.Router();
 
-router.post('/:note_id', auth.check, async (req, res) => {
+router.put('/:note_id', auth.check, async (req, res) => {
   const recallres = await recall.post(req, req.params.note_id);
   res.status(201).send(recallres);
 });

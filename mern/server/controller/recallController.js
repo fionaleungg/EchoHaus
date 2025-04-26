@@ -3,29 +3,34 @@ import { ObjectId } from 'mongodb';
 
 const recallCollection = db.collection('recall');
 
-export const post = async (req, note_id) => {
+export const put = async (req, note_id) => {
   const {accuracy, user_answer} = req.body;
   const now = new Date();
-  const newRecall = await recallCollection.insertOne({
-    accuracy,
-    user_answer,
-    note_id: new ObjectId(note_id),
-    time_recalled: now
-  });
-  return {id: newRecall.insertedId};
+
+  const recalls = await recallCollection.findOne({note_id: new ObjectId(note_id)});
+  const num = recalls.num_studied;
+  const allarray = recalls.allarray; // array of objects
+  const findindex = allarray[num];
+  if (!findindex) {
+    newobj = {
+      accuracy: [accuracy],
+      time_recalled: [now],
+      user_answer: [user_answer]
+    };
+    allarray.push(newobj);
+  } else {
+    findindex.accuracy.push(accuracy);
+    findindex.time_recalled.push(now);
+    findindex.user_answer.push(user_answer);
+  }
+  await recallCollection.updateOne(
+    {_id: recalls._id},
+    {$set: {allarray: allarray}}
+  );
 }
 
 export const get = async (req, note_id) => {
 
-  const recalls = await recallCollection.find({note_id: new ObjectId(note_id)}).toArray();
-  let recallarr = []
-  for (const recall of recalls) {
-    const obj = {
-      accuracy: recall.accuracy,
-      time_recalled: recall.time_recalled,
-      user_answer: recall.user_answer
-    }
-    recallarr.push(obj);
-  }
-  return recallarr;
+  const recalls = await recallCollection.findOne({note_id: new ObjectId(note_id)});
+  return recalls;
 }
