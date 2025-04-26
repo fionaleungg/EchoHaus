@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from '../styles/Login.module.css'
-import {useNavigate} from 'react-router-dom'
 import circleLogo from '../assets/circleLogo.png'
 
 function Login() {
@@ -52,9 +51,9 @@ function Login() {
                 <input name="password" className = {styles.inputfield} placeholder = "Password" type="password" onChange={handleInputChange}></input>
                 {/* needs auth */}
                 <button className = {styles.SIbutton} onClick={login}>
-                    SIGN IN
+                    Sign In
                 </button>
-              </div>
+            </div>
             <h1 className = {styles.deez}>{username}</h1>
           </div>
       </div>
