@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from '../styles/UploadNotes.module.css'
-import notebookText from '../assets/notebookText.png'
+// import notebookText from '../assets/notebookText.png'
 
 function UploadNotes() {
   const [name, setName] = React.useState("");

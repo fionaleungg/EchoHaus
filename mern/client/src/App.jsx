@@ -18,8 +18,8 @@ function App() {
       {/* <Landing /> */}
       {/* <Signup /> */}
       {/* <Login /> */}
-      {/* <NoteList /> */}
-      <UploadNotes/>
+      <NoteList />
+      {/* <UploadNotes/> */}
       {/* <p className="read-the-docs">
       </p> */}
     </>
