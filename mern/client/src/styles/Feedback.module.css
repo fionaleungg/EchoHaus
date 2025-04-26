@@ -47,20 +47,29 @@
     background-position: center;
 }
 
-.repeatButton {
-    margin-top: 20px;
-    width: 150px;
-    height: 45px;
-    border: none;
-    border-radius: 30px;
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 3%;
+  }
+
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #AFCAE4;
-    font-size: 16px;
-    font-weight: bold;
+    color: #343a40;
+    font-size: 1em;
     cursor: pointer;
-    transition: background 0.3s;
-    color: black;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-}
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    width: 40%;
+    height: 80%;
+    border-radius: 100px;
+    font-weight: bold;
+  }
 
 .readyButton:hover {
     background-color: #89bded;
