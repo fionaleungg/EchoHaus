@@ -4,6 +4,7 @@ import GeminiGenerator from './GeminiGenerator'
 import Landing from './signup-login/Landing'
 import Signup from './signup-login/Signup'
 import Login from './signup-login/Login'
+import NoteList from './notes/NoteList'
 
 function App() {
 
@@ -12,7 +13,9 @@ function App() {
     <>
       {/* <GeminiGenerator /> */}
       {/* <Landing /> */}
-      <Signup />
+      {/* <Signup /> */}
+      {/* <Login /> */}
+      <NoteList />
       {/* <p className="read-the-docs">
       </p> */}
     </>

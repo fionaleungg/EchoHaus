@@ -2,6 +2,9 @@ import React from 'react'
 
 function NoteList() {
   const [notearray, setNoteArray] = React.useState([]);
+  React.useEffect(() => {
+    fetchNotes();
+  }, []);
   const fetchNotes = async (event) => {
     const token = localStorage.getItem('token');
     await fetch('http://localhost:5050/api/v0/note', {
@@ -24,6 +27,14 @@ function NoteList() {
         throw(error);
       })
   }
+
+  return (
+    <>
+      {notearray.map((note, index) => (
+        <div>{note.name} {note.id}</div>
+      ))}
+    </>
+  )
   
 }
 
