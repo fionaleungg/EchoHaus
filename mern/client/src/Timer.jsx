@@ -2,8 +2,10 @@ import React from 'react'
 import styles from './styles/Timer.module.css'
 import {CountdownCircleTimer} from 'react-countdown-circle-timer'
 import LogoutButton from './signup-login/LogoutButton';
+import {useNavigate, useLocation} from 'react-router-dom';
 
 function Timer() {
+  const navigate = useNavigate();
   const [complete, setComplete] = React.useState(false);
   const [key, setKey] = React.useState(0);
   const [time, setTime] = React.useState(); // 15 minutes default
@@ -54,13 +56,12 @@ function Timer() {
       className = {styles.minuteInput} placeholder='Time in Minutes'/>
       minutes
       </span>
-      <div className = {styles.buttons}>
+      <div className = {complete ? styles.buttonsComplete : styles.buttons}>
         <button className = {styles.button} onClick={() => setPlay(!play)}>{play ? `Pause` : `Start`}</button>
         <button className = {styles.button} onClick={handleReset}>Reset</button>
       </div>
-      {complete && <div>
-        finished!
-        <button>go to recall</button>
+      {complete && <div className = {styles.recall}>
+        <button className = {styles.recallButton} onClick={() => navigate("/recall")}>Check Your Understanding</button>
       </div>}
       <LogoutButton />
     </div>

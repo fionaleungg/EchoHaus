@@ -53,6 +53,12 @@ function App() {
                 <Timer />
               </>
             } />
+            <Route path="/recall" element={
+              <>
+                <NavBar />
+                <RecallInput />
+              </>
+            } />
           </Routes>
         </NoteContext.Provider>
       </RecallContext.Provider>
