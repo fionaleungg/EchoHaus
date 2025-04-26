@@ -6,7 +6,7 @@ function GeminiGenerator() {
 
   const handleGenerate = async () => {
     try {
-      const res = await fetch('http://localhost:5050/api/generate', {
+      const res = await fetch('http://localhost:5050/api/v0/generate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
