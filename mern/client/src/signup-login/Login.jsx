@@ -1,8 +1,10 @@
 import React from 'react';
 import styles from '../styles/Login.module.css'
 import circleLogo from '../assets/circleLogo.png'
+import {useNavigate} from 'react-router-dom';
 
 function Login() {
+  const navigate = useNavigate();
   const [username, setUserName] = React.useState("");
   const [credentials, setCredentials] =
       React.useState({email: '', password: ''});
@@ -32,6 +34,7 @@ function Login() {
       .then((json) => {
         localStorage.setItem('token', json.accessToken);
         setUserName(json.name);
+        navigate("/mynotes")
       })
       .catch((err) => {
         alert("Error logging in");

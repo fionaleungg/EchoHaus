@@ -1,7 +1,9 @@
 import React from 'react'
 import styles from '../styles/NoteList.module.css'
+import {useNavigate} from 'react-router-dom';
 
 function NoteList() {
+  const navigate = useNavigate();
   const [notearray, setNoteArray] = React.useState([]);
   React.useEffect(() => {
     fetchNotes();
@@ -35,10 +37,13 @@ function NoteList() {
       <div className = {styles.notebook}>
         <div className = {styles.notes}>
           {notearray.map((note, index) => (
-            <div key={index}>{note.name} {note.id}</div>
+            <div key={index} onClick={() => navigate("/study")}>{note.name} {note.id}</div>
           ))}
         </div>
       </div>
+      <button className = {styles.addButton} onClick={() => navigate("/uploadnotes")}>
+      <i class="fa-solid fa-plus"></i>
+      </button>
     </div>
   )
   

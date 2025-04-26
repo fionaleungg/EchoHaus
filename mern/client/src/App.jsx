@@ -28,19 +28,27 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/login" element={
-            // <AuthenticatedRoute>
-              <Login />
-            // </AuthenticatedRoute>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/mynotes" element={
+            <>
+              <NavBar />
+              <NoteList />
+            </>
           } />
-          <Route path="/signup" element={
-            // <AuthenticatedRoute>
-              <Signup />
-            // </AuthenticatedRoute>
+          <Route path="/uploadnotes" element={
+            <>
+              <NavBar />
+              <UploadNotes />
+            </>
           } />
-          <Route path="/intermission" element={
-            <Timer />
-          } />
+          <Route path="/study" element={
+            <>
+              <NavBar />
+              <SingleNote />
+            </>
+            } />
+          <Route path="/intermission" element={<Timer />} />
         </Routes>
       </BrowserRouter>
     //   </HouseContext.Provider>
