@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-login-page/page2": "^1.0.4",
     "react": "^19.0.0",
+    "react-countdown-circle-timer": "^3.2.1",
     "react-dom": "^19.0.0",
     "react-login-page": "^1.0.4"
   },
