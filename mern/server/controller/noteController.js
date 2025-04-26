@@ -2,6 +2,7 @@ import db from '../db/connection.js';
 import { ObjectId } from 'mongodb';
 
 const noteCollection = db.collection('note');
+const recallCollection = db.collection('recall');
 
 export const post = async (req) => {
   const {id} = req.user;
@@ -13,6 +14,11 @@ export const post = async (req) => {
     user_id: new ObjectId(id),
     time_uploaded: now
   });
+  await recallCollection.insertOne({
+    num_studied: 0,
+    note_id: new ObjectId(newNote.insertedId),
+    allarray: [{accuracy: [], time_recalled: [], user_answer: []}]
+  })
   return {id: newNote.insertedId};
 }
 
