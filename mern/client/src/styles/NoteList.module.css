@@ -33,6 +33,8 @@
     margin-top: 20%;
     width: 80%;
     text-align: center;
+    overflow-y: scroll;
+    max-height: 65%;
 }
 
 .addButton {
@@ -47,4 +49,15 @@
     position: fixed;
     bottom: 40px;
     right: 40px;
+}
+
+.note {
+    padding: 10px;
+    transition: background 0.3s;
+    border-radius: 999px;
+
+}
+.note:hover {
+    background-color: #D0E3F5;
+    cursor: pointer;
 }

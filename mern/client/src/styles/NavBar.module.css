@@ -45,9 +45,10 @@
     border-radius: 20px;
     padding: 10px 20px;
     color: black;
+    transition: background 0.3s;
   }
   
-  .notesButton {
+  .notesButton:hover, .studyButton:hover {
     background-color: #dedede;
   }
   
@@ -60,5 +61,11 @@
     background-color: #f3f1f1;
     padding: 5px;
     z-index: 2;
+  }
+
+  .studyname {
+    color: black;
+    margin-top: 10px;
+    font-weight: bold;
   }
   
