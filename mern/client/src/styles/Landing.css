@@ -30,8 +30,8 @@
     color: #343a40;
   }
   
-  img {
-    width: 300px;
+  .notebook {
+    width: 200px; /* Adjust as needed */
     height: auto;
     margin-right: 15%;
   }
