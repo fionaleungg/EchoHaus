@@ -11,12 +11,11 @@ router.post('/', auth.check, async (req, res) => {
 
 router.get('/', auth.check, async (req, res) => {
   const notes = await note.get(req);
-  console.log('notes: ', notes);
   res.status(200).send(notes);
 });
 
 router.get('/:note_id', auth.check, async (req, res) => {
-  const notes = await note.get(req, req.params.note_id);
+  const notes = await note.getOne(req, req.params.note_id);
   res.status(200).send(notes);
 });
 

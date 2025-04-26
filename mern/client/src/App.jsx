@@ -6,6 +6,7 @@ import Signup from './signup-login/Signup'
 import Login from './signup-login/Login'
 import NoteList from './notes/NoteList'
 import UploadNotes from './notes/UploadNotes'
+import SingleNote from './notes/SingleNote'
 import NavBar from './navigation/NavBar'
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
       {/* <Landing /> */}
       {/* <Signup /> */}
       {/* <Login /> */}
-      <NoteList />
+      {/* <NoteList /> */}
+      <SingleNote />
       {/* <UploadNotes/> */}
       {/* <p className="read-the-docs">
       </p> */}
