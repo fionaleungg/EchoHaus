@@ -1,4 +1,4 @@
-import '../styles/Landing.css'
+import styles from '../styles/Landing.module.css'
 import notebook from '../assets/notebook.png'
 import {useNavigate} from 'react-router-dom';
 
@@ -7,20 +7,20 @@ function Landing() {
 
   const navigate = useNavigate();
   return (
-    <div className = "landing">
-      <img className = "notebook" src={notebook} />
+    <div className = {styles.landing}>
+      <img className = {styles.notebook} src={notebook} />
 
-      <div className = "right">
-        <div className = "landing-title">
-            <div className = "welcome">Welcome to</div>
-            <div className = "app-name">EchoHaus</div>
+      <div className = {styles.right}>
+        <div className = {styles.title}>
+            <div className = {styles.welcome}>Welcome to</div>
+            <div className = {styles.echohaus}>EchoHaus</div>
         </div>
         
-        <div className = "buttons">
-            <button className = "signin" onClick={() => navigate("/login")}>
+        <div className = {styles.buttons}>
+            <button className = {styles.signin} onClick={() => navigate("/login")}>
                 Sign In
             </button>
-            <button className= "signin" onClick={() => navigate("/signup")}>
+            <button className= {styles.signin} onClick={() => navigate("/signup")}>
                 Sign Up
             </button>
         </div>

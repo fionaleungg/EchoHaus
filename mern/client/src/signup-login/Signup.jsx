@@ -1,4 +1,6 @@
 import React from 'react';
+import styles from '../styles/Signup.module.css'
+import circleLogo from '../assets/circleLogo.png'
 
 function Signup() {
   const [credentials, setCredentials] =
@@ -32,15 +34,18 @@ function Signup() {
 
   return (
     <>
-      <div className = "signup">
-        <div className = "signin-card">
-          <h1 className = "title">Sign Up</h1>
-          <input className = "email" name="email" placeholder = "Email" type="email" onChange={handleInputChange}></input>
-          <input className = "name" name="name" placeholder = "Name" type="text" onChange={handleInputChange}></input>
-          <input className = "password" name="password" placeholder = "Password" type="password" onChange={handleInputChange}></input>
-          <button className = "signup-button" onClick={signup}>
-              SIGN UP
-          </button>
+      <div className = {styles.signup}>
+        <div className = {styles.card}>
+        <img className = {styles.circleLogo} src={circleLogo} />
+          <h1 className = {styles.title}>Sign Up</h1>
+          <div className = {styles.content}>
+            <input className = {styles.inputfield} name="email" placeholder = "Email" type="email" onChange={handleInputChange}></input>
+            <input className = {styles.inputfield} name="name" placeholder = "Name" type="text" onChange={handleInputChange}></input>
+            <input className = {styles.inputfield} name="password" placeholder = "Password" type="password" onChange={handleInputChange}></input>
+            <button className = {styles.SUbutton} onClick={signup}>
+                Sign Up
+            </button>
+          </div>
         </div>
       </div>
     </>

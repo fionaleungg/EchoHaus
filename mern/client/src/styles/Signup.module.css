@@ -1,4 +1,4 @@
-.login {
+.signup {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -15,7 +15,7 @@
     color: black;
 }
 
-.signin {
+.card {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -45,7 +45,7 @@
     align-items: center;
 }
 
-.SIbutton {
+.SUbutton {
     background-color: #AFCAE4;
     color: #343a40;
     border-radius: 50px;
@@ -53,6 +53,7 @@
     font-size: 1em;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    /* margin-bottom: 10px; */
     margin-top: 10px;
     width: 100%;
 }
