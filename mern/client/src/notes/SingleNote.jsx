@@ -1,7 +1,9 @@
 import React from 'react'
 import styles from '../styles/SingleNote.module.css'
+import {useNavigate} from 'react-router-dom';
 
 function SingleNote() {
+  const navigate = useNavigate();
   const [singleNote, setSingleNote] = React.useState(undefined);
   React.useEffect(() => {
     fetchSingleNote();
@@ -44,7 +46,7 @@ function SingleNote() {
             <div>You don't have any notes</div>
           }
         </div>
-        <button className={styles.readyButton}>
+        <button className={styles.readyButton} onClick={() => navigate("/intermission")}>
           I'm Ready!
         </button>
       </div>

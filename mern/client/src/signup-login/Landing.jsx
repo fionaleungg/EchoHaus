@@ -3,7 +3,6 @@ import notebook from '../assets/notebook.png'
 import {useNavigate} from 'react-router-dom';
 
 function Landing() {
-//   const [count, setCount] = useState(0)
 
   const navigate = useNavigate();
   return (
