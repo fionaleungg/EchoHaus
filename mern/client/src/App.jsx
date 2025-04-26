@@ -45,7 +45,12 @@ function App() {
               <SingleNote />
             </>
             } />
-          <Route path="/intermission" element={<Timer />} />
+          <Route path="/intermission" element={
+            <>
+              <NavBar />
+              <Timer />
+            </>
+            } />
         </Routes>
       </RecallContext.Provider>
     </BrowserRouter>
