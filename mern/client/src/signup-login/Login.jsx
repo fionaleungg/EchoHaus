@@ -1,30 +1,65 @@
 import React from 'react';
-import Login from '@react-login-page/page2';
-import defaultBannerImage from '@react-login-page/page2/banner-image';
+import styles from '../styles/Login.module.css'
+import {useNavigate} from 'react-router-dom'
+import circleLogo from '../assets/circleLogo.png'
 
-const css = {
-    '--login-bg': 'linear-gradient(-135deg,#c850c0,#4158d0)',
-    '--login-color': '#333',
-    '--login-inner-bg': '#fff',
-    '--login-input': '#57b846',
-    '--login-input-bg': '#e6e6e6',
-    '--login-input-placeholder': '#999999',
-    '--login-btn': '#fff',
-    '--login-btn-bg': '#57b846',
-    '--login-btn-bg-focus': '#57b846',
-    '--login-btn-bg-hover': '#333',
-    '--login-btn-bg-active': '#57b846',
+function Login() {
+  const [username, setUserName] = React.useState("");
+  const [credentials, setCredentials] =
+      React.useState({email: '', password: ''});
+  const handleInputChange = (event) => {
+    const { value, name } = event.target;
+    setCredentials(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
-const Demo = () => (
-  <Login style={{ height: 580, ...css }}>
-    <Login.Banner>
-      <img src={defaultBannerImage} />
-    </Login.Banner>
-    <Login.Password>
-      <div>xx</div>
-    </Login.Password>
-  </Login>
-);
+  const login = async () => {
+    localStorage.removeItem('token');
+    await fetch(`http://localhost:5050/api/v0/login`, {
+      method: "POST",
+      body: JSON.stringify(credentials),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw res;
+        }
+        return res.json();
+      })
+      .then((json) => {
+        localStorage.setItem('token', json.accessToken);
+        setUserName(json.name);
+      })
+      .catch((err) => {
+        alert("Error logging in");
+        console.log(err);
+      });
+  };
 
-export default Demo;
+  // const navigate = useNavigate();
+  return (
+    <>
+      <div className = {styles.login}>
+          <div className = {styles.signin}>
+            <img className = {styles.circleLogo} src={circleLogo} />
+            <h1 className = {styles.title}>Sign In</h1>
+            <div className = {styles.content}>
+                <input name="email" className = {styles.inputfield} placeholder = "Email" type="email" onChange={handleInputChange}></input>
+                <input name="password" className = {styles.inputfield} placeholder = "Password" type="password" onChange={handleInputChange}></input>
+                {/* needs auth */}
+                <button className = {styles.SIbutton} onClick={login}>
+                    SIGN IN
+                </button>
+              </div>
+            <h1 className = {styles.deez}>{username}</h1>
+          </div>
+      </div>
+    </>
+  )
+}
+
+export default Login;
