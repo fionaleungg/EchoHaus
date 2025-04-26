@@ -61,3 +61,16 @@
     color: black;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 }
+
+.textcontainer {
+    width: 95%;
+    align-items: center;
+    justify-content: center;
+    max-height: 220px;
+}
+.text {
+    overflow-y: scroll;
+    width: 95%;
+    max-height: 200px;
+    text-align: center;
+}

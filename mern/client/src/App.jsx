@@ -13,40 +13,43 @@ import Timer from './Timer';
 import RecallContext from './recall/RecallContext'
 import RecallInput from './recall/RecallInput';
 import ForgettingCurveChart from './graph/GraphImage';
+import NoteContext from './notes/NoteContext';
 
 function App() {
   const [currentRecall, setCurrentRecall] = React.useState("");
-
+  const [currentNote, setCurrentNote] = React.useState({name: "", id: ""});
   return (
     <BrowserRouter>
       <RecallContext.Provider value={{currentRecall, setCurrentRecall}}>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/graph" element={
-            <ForgettingCurveChart />
-          } />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/mynotes" element={
-            <>
-              <NavBar />
-              <NoteList />
-            </>
-          } />
-          <Route path="/uploadnotes" element={
-            <>
-              <NavBar />
-              <UploadNotes />
-            </>
-          } />
-          <Route path="/study" element={
-            <>
-              <NavBar />
-              <SingleNote />
-            </>
+        <NoteContext.Provider value={{currentNote, setCurrentNote}}>
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/graph" element={
+              <ForgettingCurveChart />
             } />
-          <Route path="/intermission" element={<Timer />} />
-        </Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/mynotes" element={
+              <>
+                <NavBar />
+                <NoteList />
+              </>
+            } />
+            <Route path="/uploadnotes" element={
+              <>
+                <NavBar />
+                <UploadNotes />
+              </>
+            } />
+            <Route path="/study" element={
+              <>
+                <NavBar />
+                <SingleNote />
+              </>
+              } />
+            <Route path="/intermission" element={<Timer />} />
+          </Routes>
+        </NoteContext.Provider>
       </RecallContext.Provider>
     </BrowserRouter>
   )

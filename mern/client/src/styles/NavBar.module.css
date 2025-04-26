@@ -61,4 +61,10 @@
     padding: 5px;
     z-index: 2;
   }
+
+  .studyname {
+    color: black;
+    margin-top: 10px;
+    font-weight: bold;
+  }
   
