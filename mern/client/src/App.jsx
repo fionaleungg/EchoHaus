@@ -5,6 +5,7 @@ import GeminiGenerator from './GeminiGenerator'
 import Landing from './signup-login/Landing'
 import Signup from './signup-login/Signup'
 import Login from './signup-login/Login'
+import Timer from './Timer';
 
 function App() {
 
@@ -32,6 +33,9 @@ function App() {
             // <AuthenticatedRoute>
               <Signup />
             // </AuthenticatedRoute>
+          } />
+          <Route path="/intermission" element={
+            <Timer />
           } />
         </Routes>
       </BrowserRouter>
