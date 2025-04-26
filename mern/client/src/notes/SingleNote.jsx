@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from '../styles/SingleNote.module.css'
 
 function SingleNote() {
   const [singleNote, setSingleNote] = React.useState(undefined);
@@ -7,7 +8,7 @@ function SingleNote() {
   }, []);
   const fetchSingleNote = async (event) => {
     const token = localStorage.getItem('token');
-    const note_id = '680c539096836eead4200b97';
+    const note_id = '680cf39acef054f0904ba33e';
     await fetch(`http://localhost:5050/api/v0/note/${note_id}`, {
       method: 'GET',
       headers: {
@@ -29,16 +30,25 @@ function SingleNote() {
       })
   }
   return (
-    <>
-    {singleNote != undefined ? 
-      <div>
-        <div>Name: {singleNote.name}</div>
-        <div>Content: {singleNote.text}</div>
+    <div className = {styles.singleNote}>
+      <div className = {styles.container}>
+        <h2 className={styles.phase}>Phase 1</h2>
+        <h1 className={styles.title}>Study</h1>
+        <div className={styles.notebook}>
+          {singleNote != undefined ? 
+            <div>
+              <div>Name: {singleNote.name}</div>
+              <div>Content: {singleNote.text}</div>
+            </div>
+            :
+            <div>You don't have any notes</div>
+          }
+        </div>
+        <button className={styles.readyButton}>
+          I'm Ready!
+        </button>
       </div>
-      :
-      <div>You don't have any notes</div>
-    }
-    </>
+    </div>
   )
 }
 

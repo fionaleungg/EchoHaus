@@ -20,8 +20,8 @@ function App() {
       {/* <Signup /> */}
       {/* <Login /> */}
       {/* <NoteList /> */}
-      <SingleNote />
       {/* <UploadNotes/> */}
+      <SingleNote/>
       {/* <p className="read-the-docs">
       </p> */}
     </>

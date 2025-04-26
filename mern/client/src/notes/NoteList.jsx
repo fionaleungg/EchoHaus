@@ -31,7 +31,7 @@ function NoteList() {
 
   return (
     <div className = {styles.noteList}>
-      <h1 className={styles.title}>Upload Notes</h1>
+      <h1 className={styles.title}>My Notes</h1>
       <div className = {styles.notebook}>
         <div className = {styles.notes}>
           {notearray.map((note, index) => (
