@@ -1,30 +1,51 @@
 import React from 'react';
-import Login from '@react-login-page/page2';
-import defaultBannerImage from '@react-login-page/page2/banner-image';
 
-const css = {
-    '--login-bg': 'linear-gradient(-135deg,#c850c0,#4158d0)',
-    '--login-color': '#333',
-    '--login-inner-bg': '#fff',
-    '--login-input': '#57b846',
-    '--login-input-bg': '#e6e6e6',
-    '--login-input-placeholder': '#999999',
-    '--login-btn': '#fff',
-    '--login-btn-bg': '#57b846',
-    '--login-btn-bg-focus': '#57b846',
-    '--login-btn-bg-hover': '#333',
-    '--login-btn-bg-active': '#57b846',
+function Signup() {
+  const [credentials, setCredentials] =
+    React.useState({email: '', password: '', name: ''});
+  const handleInputChange = (event) => {
+    const { value, name } = event.target;
+    setCredentials(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
-const Demo = () => (
-  <Login style={{ height: 580, ...css }}>
-    <Login.Banner>
-      <img src={defaultBannerImage} />
-    </Login.Banner>
-    <Login.Password>
-      <div>xx</div>
-    </Login.Password>
-  </Login>
-);
+  const signup = async (event) => {
+    localStorage.removeItem('token');
+    await fetch(`http://localhost:5050/api/v0/user`, {
+      method: "POST",
+      body: JSON.stringify(credentials),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw res;
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-export default Demo;
+  return (
+    <>
+      <div className = "signup">
+        <div className = "signin-card">
+          <h1 className = "title">Sign Up</h1>
+          <input className = "email" name="email" placeholder = "Email" type="email" onChange={handleInputChange}></input>
+          <input className = "name" name="name" placeholder = "Name" type="text" onChange={handleInputChange}></input>
+          <input className = "password" name="password" placeholder = "Password" type="password" onChange={handleInputChange}></input>
+          <button className = "signup-button" onClick={signup}>
+              SIGN UP
+          </button>
+        </div>
+      </div>
+    </>
+  )
+
+}
+
+export default Signup;
