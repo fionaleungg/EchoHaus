@@ -12,6 +12,7 @@ import NavBar from './navigation/NavBar'
 import Timer from './Timer';
 import RecallContext from './recall/RecallContext'
 import RecallInput from './recall/RecallInput';
+import Feedback from './feedback/Feedback';
 import ForgettingCurveChart from './graph/GraphImage';
 import NoteContext from './notes/NoteContext';
 
@@ -57,6 +58,12 @@ function App() {
               <>
                 <NavBar />
                 <RecallInput />
+              </>
+            } />
+            <Route path="/feedback" element={
+              <>
+                <NavBar />
+                <Feedback />
               </>
             } />
           </Routes>
