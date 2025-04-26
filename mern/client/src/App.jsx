@@ -1,4 +1,4 @@
-
+import React from 'react';
 import './App.css'
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import GeminiGenerator from './GeminiGenerator'
@@ -6,41 +6,32 @@ import Landing from './signup-login/Landing'
 import Signup from './signup-login/Signup'
 import Login from './signup-login/Login'
 import Timer from './Timer';
+import RecallContext from './recall/RecallContext'
+import RecallInput from './recall/RecallInput';
 
 function App() {
-
+  const [currentRecall, setCurrentRecall] = React.useState("");
 
   return (
-    // <>
-    //   {/* <GeminiGenerator /> */}
-    //   <Landing />
-    //   {/* <Signup /> */}
-    //   {/* <Login /> */}
-    //   {/* <p className="read-the-docs">
-    //   </p> */}
-    // </>
-    // <UserContext.Provider value={{currentUserEmail, setUserEmail, currentUserName, setUserName}}>
-    //   <HouseContext.Provider value={{houseName, setHouseName, houseType, setHouseType}}>
-      <BrowserRouter>
+    <BrowserRouter>
+      <RecallContext.Provider value={{currentRecall, setCurrentRecall}}>
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={
-            // <AuthenticatedRoute>
-              <Login />
-            // </AuthenticatedRoute>
+            <Login />
           } />
           <Route path="/signup" element={
-            // <AuthenticatedRoute>
-              <Signup />
-            // </AuthenticatedRoute>
+            <Signup />
           } />
           <Route path="/intermission" element={
             <Timer />
           } />
+          <Route path="/recall" element={
+            <RecallInput />
+          } />
         </Routes>
-      </BrowserRouter>
-    //   </HouseContext.Provider>
-    // </UserContext.Provider>
+      </RecallContext.Provider>
+    </BrowserRouter>
   )
 }
 
