@@ -9,6 +9,7 @@ import NoteList from './notes/NoteList'
 import UploadNotes from './notes/UploadNotes'
 import SingleNote from './notes/SingleNote'
 import NavBar from './navigation/NavBar'
+import Timer from './Timer';
 
 function App() {
 
@@ -36,6 +37,9 @@ function App() {
             // <AuthenticatedRoute>
               <Signup />
             // </AuthenticatedRoute>
+          } />
+          <Route path="/intermission" element={
+            <Timer />
           } />
         </Routes>
       </BrowserRouter>
