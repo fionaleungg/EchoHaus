@@ -1,11 +1,11 @@
 import '../styles/Landing.css'
 import notebook from '../assets/notebook.png'
-// import {useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 function Landing() {
 //   const [count, setCount] = useState(0)
 
-//   const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
     <div className = "landing">
       <img className = "notebook" src={notebook} />
@@ -17,12 +17,10 @@ function Landing() {
         </div>
         
         <div className = "buttons">
-            {/* <button className = "signin" onClick={() => navigate("/login")}> */}
-            <button className = "signin">
+            <button className = "signin" onClick={() => navigate("/login")}>
                 Sign In
             </button>
-            {/* <button className= "signin" onClick={() => navigate("/signup")}> */}
-            <button className= "signin">
+            <button className= "signin" onClick={() => navigate("/signup")}>
                 Sign Up
             </button>
         </div>

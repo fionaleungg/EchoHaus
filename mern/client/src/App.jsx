@@ -1,5 +1,6 @@
 
 import './App.css'
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import GeminiGenerator from './GeminiGenerator'
 import Landing from './signup-login/Landing'
 import Signup from './signup-login/Signup'
@@ -13,18 +14,33 @@ function App() {
 
 
   return (
-    <>
-      <NavBar/>
-      {/* <GeminiGenerator /> */}
-      {/* <Landing /> */}
-      {/* <Signup /> */}
-      {/* <Login /> */}
-      {/* <NoteList /> */}
-      {/* <UploadNotes/> */}
-      <SingleNote/>
-      {/* <p className="read-the-docs">
-      </p> */}
-    </>
+    // <>
+    //   {/* <GeminiGenerator /> */}
+    //   <Landing />
+    //   {/* <Signup /> */}
+    //   {/* <Login /> */}
+    //   {/* <p className="read-the-docs">
+    //   </p> */}
+    // </>
+    // <UserContext.Provider value={{currentUserEmail, setUserEmail, currentUserName, setUserName}}>
+    //   <HouseContext.Provider value={{houseName, setHouseName, houseType, setHouseType}}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/login" element={
+            // <AuthenticatedRoute>
+              <Login />
+            // </AuthenticatedRoute>
+          } />
+          <Route path="/signup" element={
+            // <AuthenticatedRoute>
+              <Signup />
+            // </AuthenticatedRoute>
+          } />
+        </Routes>
+      </BrowserRouter>
+    //   </HouseContext.Provider>
+    // </UserContext.Provider>
   )
 }
 
