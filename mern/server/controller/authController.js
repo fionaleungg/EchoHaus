@@ -1,6 +1,7 @@
 import db from '../db/connection.js'
 import jwt from 'jsonwebtoken'
-const bcrypt = require('bcryptjs');
+import bcrypt from 'bcryptjs';
+
 export async function login(req) {
   const {email, password} = req.body;
   let collection = db.collection("user");
