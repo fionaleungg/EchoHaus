@@ -10,14 +10,12 @@ function Feedback() {
   const navigate = useNavigate();
   const rtx = useContext(RecallContext);
 
-  // State hooks
   const [curnote, setcurnote] = useState("");
   const [attemptacc, setAttemptAcc] = useState({ prev_attempt: "", prev_accuracy: "" });
   const [percent, setPercent] = useState(null);
   const [feedback, setFeedback] = useState("");
-  const [loading, setLoading] = useState(true); // Loading state to track fetches
+  const [loading, setLoading] = useState(true);
 
-  // Fetch data and prepare everything once component mounts
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -32,7 +30,6 @@ function Feedback() {
     fetchData();
   }, []);
 
-  // Fetch previous attempt data
   const fetchPrevAttempt = async () => {
     const token = localStorage.getItem('token');
     const response = await fetch(`http://localhost:5050/api/v0/recall/${ntx.currentNote.id}`, {
@@ -49,7 +46,6 @@ function Feedback() {
     setAttemptAcc({ prev_accuracy: latestAcc, prev_attempt: latestAns });
   };
 
-  // Fetch the current note content
   const fetchNoteContent = async () => {
     const token = localStorage.getItem('token');
     const response = await fetch(`http://localhost:5050/api/v0/note/${ntx.currentNote.id}`, {
@@ -63,7 +59,6 @@ function Feedback() {
     setcurnote(json.text);
   };
 
-  // Generate feedback and percentage from the recall attempt
   const buttonSubmit = async () => {
     const newData = {
       prev_attempt: attemptacc.prev_attempt,
@@ -99,42 +94,34 @@ function Feedback() {
       if (!res.ok) throw new Error('Failed to fetch data');
       const data = await res.json();
 
-      // Log the response to check accuracy and feedback
       console.log('Generated Response:', data.response);
 
       const accuracyMatch = data.response.match(/Percentage:\s*(\d+)/);
       const feedbackMatch = data.response.match(/Feedback:\s*(.+)/s);
 
-      // Set percent and feedback
-      const accuracy = accuracyMatch?.[1] || '';
-      const feedback = feedbackMatch?.[1] || '';
+      const accuracy = accuracyMatch?.[1] || null;
+      const feedbackValue = feedbackMatch?.[1] || "";
 
-      // Log the parsed values
       console.log('Parsed Accuracy:', accuracy);
-      console.log('Parsed Feedback:', feedback);
+      console.log('Parsed Feedback:', feedbackValue);
 
       setPercent(accuracy);
-      setFeedback(feedback);
-
-      // Check if accuracy and feedback are set, if not, throw an error
-      if (!accuracy || !feedback) {
-        console.error('Error: Missing accuracy or feedback');
-        return; // Stop further execution
-      }
-
-      // If both are available, proceed with updating recalls
-      await updateRecalls();
+      setFeedback(feedbackValue);
 
     } catch (error) {
       console.error('Error generating content:', error);
     }
   };
 
+  useEffect(() => {
+    if (percent !== null && feedback !== "") {
+      updateRecalls();
+    }
+  }, [percent, feedback]);
 
-  // Update the recall data in the backend
   const updateRecalls = async () => {
-    if (percent === null || !feedback) {
-      console.error('Accuracy or feedback is missing. Cannot update recalls.');
+    if (percent === null || feedback === "") {
+      console.error('Accuracy or feedback is missing. Cannot update recalls (inside useEffect).');
       return;
     }
 
