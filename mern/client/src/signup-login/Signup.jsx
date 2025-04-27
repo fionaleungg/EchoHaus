@@ -2,8 +2,10 @@ import React from 'react';
 import styles from '../styles/Signup.module.css'
 import circleLogo from '../assets/circleLogo.png'
 import fish from '../assets/fish.png'
+import { useNavigate } from 'react-router-dom';
 
 function Signup() {
+  const navigate = useNavigate();
   const [credentials, setCredentials] =
     React.useState({email: '', password: '', name: ''});
   const handleInputChange = (event) => {
@@ -27,6 +29,7 @@ function Signup() {
         if (!res.ok) {
           throw res;
         }
+        navigate("/login");
       })
       .catch((err) => {
         console.log(err);
