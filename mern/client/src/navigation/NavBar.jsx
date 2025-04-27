@@ -12,12 +12,19 @@ function NavBar() {
     <div className={styles.navbarWrapper}>
       <div className={styles.navbar}>
         <button className={styles.studyButton} onClick={() => navigate("/study")}>Study</button>
-        {location.pathname == "/study" && ntx.currentNote && <div className={styles.studyname}>
+        {(location.pathname == "/study" || location.pathname == "/forgettingcurve")
+        && ntx.currentNote && <div className={styles.studyname}>
             Currently Studying: {ntx.currentNote.name}
           </div>}
         <button className={styles.notesButton} onClick={() => navigate("/mynotes")}>My Notes</button>
       </div>
-      <img src={circleLogo} alt="Logo" className={styles.logo} />
+      {(ntx.currentNote.name && 
+        <img src={circleLogo} alt="Logo" className={styles.logo}
+        onClick={() => navigate("/forgettingcurve")}/>
+      )}
+      {(!ntx.currentNote.name && 
+        <img src={circleLogo} alt="Logo" className={styles.logo}/>
+      )}
     </div>
   );  
 }

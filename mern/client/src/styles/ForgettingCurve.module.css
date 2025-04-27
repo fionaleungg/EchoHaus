@@ -1,0 +1,42 @@
+.graph {
+    position: relative; /* <- needed so children can be absolutely positioned */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: white;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.title {
+    position: absolute;
+    top: 160px; /* adjust how high or low */
+    left: 50%;
+    transform: translateX(-50%); /* center horizontally */
+    z-index: 10; /* put it on top of everything */
+
+    font-size: 2em;
+    font-weight: bold;
+    color: #343a40;
+    margin: 0;
+    margin-bottom: 2%;
+}
+
+.curve {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    width: 100vw;
+    background-color: white;
+    background-size: contain;
+    z-index: 1;
+    margin-top: 150px; /* push down if needed */
+}
+
+.logoutButton {
+    z-index: 1000;
+}
