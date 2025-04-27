@@ -12,7 +12,7 @@ function NavBar() {
     <div className={styles.navbarWrapper}>
       <div className={styles.navbar}>
         <button className={styles.studyButton} onClick={() => navigate("/study")}>Study</button>
-        {(location.pathname == "/study" || location.pathname == "/forgettingcurve")
+        {(location.pathname == "/study" || location.pathname == "/forgettingcurve" || location.pathname == "/intermission" || location.pathname == "/recall" || location.pathname == "/feedback")
         && ntx.currentNote && <div className={styles.studyname}>
             Currently Studying: {ntx.currentNote.name}
           </div>}
