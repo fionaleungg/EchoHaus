@@ -31,9 +31,19 @@
 .inputfield {
     background-color:white;
     border: none;
+    outline: none;
     border-bottom: 2px solid rgba(0, 0, 0, 0.1);
     color: black;
     width: 100%;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.inputfield:focus {
+    border-color:#AFCAE4;
+    box-shadow: 0 2px 4px #a7c6e2;
 }
 
 .content {
@@ -49,13 +59,19 @@
     background-color: #AFCAE4;
     color: #343a40;
     border-radius: 50px;
+    border: none;
     padding: 12px 30px;
     font-size: 1.5em;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
     margin-top: 10px;
     width: 100%;
     font-weight: bold;
+}
+
+.SUbutton:hover {
+    background-color: #8ab6df;
+    transform: scale(1.03);
 }
 
 .circleLogo {
