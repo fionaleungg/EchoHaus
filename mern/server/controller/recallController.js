@@ -12,7 +12,7 @@ export const put = async (req, note_id) => {
   const allarray = recalls.allarray; // array of objects
   const findindex = allarray[num];
   if (!findindex) {
-    newobj = {
+    const newobj = {
       accuracy: [accuracy],
       time_recalled: [now],
       user_answer: [user_answer]
@@ -26,6 +26,15 @@ export const put = async (req, note_id) => {
   await recallCollection.updateOne(
     {_id: recalls._id},
     {$set: {allarray: allarray}}
+  );
+}
+
+export const putNum = async (req, note_id) => {
+  const recalls = await recallCollection.findOne({note_id: new ObjectId(note_id)});
+  const num = recalls.num_studied;
+  await recallCollection.updateOne(
+    {_id: recalls._id},
+    {$set: {num_studied: num + 1}}
   );
 }
 

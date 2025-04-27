@@ -145,6 +145,30 @@ function Feedback() {
     }
   };
 
+  const handleStudy = async () => {
+    const token = localStorage.getItem('token');
+    await fetch(`http://localhost:5050/api/v0/recall/num/${ntx.currentNote.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
+    })
+    .then((res) => {
+      if (!res.ok) {
+        throw res;
+      }
+    })
+    .catch((err) => {
+      throw err;
+    })
+  };
+
+  const handleRepeatStudy = () => {
+    handleStudy();
+    navigate("/study");
+  };
+  
   return (
     <div className={styles.feedback}>
       <div className={styles.container}>
@@ -166,7 +190,7 @@ function Feedback() {
           <button className={styles.button} onClick={() => navigate("/intermission")}>
             Repeat
           </button>
-          <button className={styles.button} onClick={() => navigate("/study")}>
+          <button className={styles.button} onClick={handleRepeatStudy}>
             I need to study more
           </button>
           <button className={styles.button} onClick={buttonSubmit} disabled={loading}>

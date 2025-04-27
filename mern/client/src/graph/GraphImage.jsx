@@ -23,6 +23,22 @@ ChartJS.register(
 );
 
 const ForgettingCurveChart = () => {
+  const [recalls, setRecalls] = React.useState([]);
+  const fetchPrevAttempt = async () => {
+    const token = localStorage.getItem('token');
+    const response = await fetch(`http://localhost:5050/api/v0/recall/${ntx.currentNote.id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+    });
+    const json = await response.json();
+    const latestArr = json.allarray[json.allarray.length - 1];
+    const latestAcc = latestArr.accuracy[latestArr.accuracy.length - 1];
+    const latestAns = latestArr.user_answer[latestArr.user_answer.length - 1];
+    setAttemptAcc({ prev_accuracy: latestAcc, prev_attempt: latestAns });
+  };
   // Initial study session data (first round) - Time since the note was uploaded
   const [timeArray1, setTimeArray1] = useState([0, 12, 24, 48, 72]); // Time in hours since the note was uploaded
   const [accuracyArray1, setAccuracyArray1] = useState([100, 85, 75, 60, 50]); // First session accuracies
