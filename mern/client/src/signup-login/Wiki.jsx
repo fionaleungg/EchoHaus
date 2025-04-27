@@ -1,10 +1,14 @@
 import styles from '../styles/Wiki.module.css';
+import curve from '../assets/forgettingCurve.png';
+
+
 function Wiki() {
   return (
     <div className={styles.background}>
       <div className={styles.title}>
         What is the Ebbinghaus Forgetting Curve?
       </div>
+      <img className={styles.curve} src={curve} />
       <div className={styles.bodytext}> 
         Created by Psychologist Hermann Ebbinghaus, the Forgetting Curve illustrates how memory retention decreases over time.
         He also found that an effective way to improve memory retention for a particular subject is to allow yourself to forget it first.
