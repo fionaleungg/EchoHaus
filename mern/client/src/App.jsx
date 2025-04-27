@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css'
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import GeminiGenerator from './GeminiGenerator'
 import Landing from './signup-login/Landing'
 import Signup from './signup-login/Signup'
 import Login from './signup-login/Login'
@@ -63,8 +62,8 @@ function App() {
             <Route path="/feedback" element={
               <>
                 <NavBar />
-                {/* <Feedback /> */}
-                <GeminiGenerator />
+                <Feedback />
+                {/* <GeminiGenerator /> */}
               </>
             } />
           </Routes>

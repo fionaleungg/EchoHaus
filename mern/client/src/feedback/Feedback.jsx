@@ -1,28 +1,194 @@
-import React from 'react'
-import styles from '../styles/Feedback.module.css'
+import React, { useState, useEffect, useContext } from 'react';
+import styles from '../styles/Feedback.module.css';
 import LogoutButton from '../signup-login/LogoutButton';
-import {useNavigate, useLocation} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import RecallContext from '../recall/RecallContext';
+import NoteContext from '../notes/NoteContext';
 
 function Feedback() {
+  const ntx = useContext(NoteContext);
   const navigate = useNavigate();
+  const rtx = useContext(RecallContext);
+
+  // State hooks
+  const [curnote, setcurnote] = useState("");
+  const [attemptacc, setAttemptAcc] = useState({ prev_attempt: "", prev_accuracy: "" });
+  const [percent, setPercent] = useState(null);
+  const [feedback, setFeedback] = useState("");
+  const [loading, setLoading] = useState(true); // Loading state to track fetches
+
+  // Fetch data and prepare everything once component mounts
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await fetchPrevAttempt();
+        await fetchNoteContent();
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  // Fetch previous attempt data
+  const fetchPrevAttempt = async () => {
+    const token = localStorage.getItem('token');
+    const response = await fetch(`http://localhost:5050/api/v0/recall/${ntx.currentNote.id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+    });
+    const json = await response.json();
+    const latestArr = json.allarray[json.allarray.length - 1];
+    const latestAcc = latestArr.accuracy[latestArr.accuracy.length - 1];
+    const latestAns = latestArr.user_answer[latestArr.user_answer.length - 1];
+    setAttemptAcc({ prev_accuracy: latestAcc, prev_attempt: latestAns });
+  };
+
+  // Fetch the current note content
+  const fetchNoteContent = async () => {
+    const token = localStorage.getItem('token');
+    const response = await fetch(`http://localhost:5050/api/v0/note/${ntx.currentNote.id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+    });
+    const json = await response.json();
+    setcurnote(json.text);
+  };
+
+  // Generate feedback and percentage from the recall attempt
+  const buttonSubmit = async () => {
+    const newData = {
+      prev_attempt: attemptacc.prev_attempt,
+      prev_accuracy: attemptacc.prev_accuracy,
+      original_notes: curnote
+    };
+
+    const prompt = `I will give you my original notes and my new attempt at recalling them.
+    Previous recall attempt: ${newData.prev_attempt}
+    Previous recall accuracy percentage: ${newData.prev_accuracy}
+    Please rate the overall accuracy of the new recall as a single percentage (0–100%), based on the following criteria:
+    How accurate the definition is
+    How complete the explanation is
+    Whether important terminology is preserved
+    Whether the logic and meaning are consistent with the original
+    Then provide:
+    Percentage: <>
+    Feedback: <>
+    Organize the feedback as a short, useful few sentences of what the person got wrong (don’t tell them what the correct answer is or anything that they missed).
+    Here are the inputs:
+    Original Notes: ${newData.original_notes}
+    New recall attempt: ${rtx.currentRecall}`;
+
+    try {
+      const res = await fetch('http://localhost:5050/api/v0/generate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ prompt }),
+      });
+
+      if (!res.ok) throw new Error('Failed to fetch data');
+      const data = await res.json();
+
+      // Log the response to check accuracy and feedback
+      console.log('Generated Response:', data.response);
+
+      const accuracyMatch = data.response.match(/Percentage:\s*(\d+)/);
+      const feedbackMatch = data.response.match(/Feedback:\s*(.+)/s);
+
+      // Set percent and feedback
+      const accuracy = accuracyMatch?.[1] || '';
+      const feedback = feedbackMatch?.[1] || '';
+
+      // Log the parsed values
+      console.log('Parsed Accuracy:', accuracy);
+      console.log('Parsed Feedback:', feedback);
+
+      setPercent(accuracy);
+      setFeedback(feedback);
+
+      // Check if accuracy and feedback are set, if not, throw an error
+      if (!accuracy || !feedback) {
+        console.error('Error: Missing accuracy or feedback');
+        return; // Stop further execution
+      }
+
+      // If both are available, proceed with updating recalls
+      await updateRecalls();
+
+    } catch (error) {
+      console.error('Error generating content:', error);
+    }
+  };
+
+
+  // Update the recall data in the backend
+  const updateRecalls = async () => {
+    if (percent === null || !feedback) {
+      console.error('Accuracy or feedback is missing. Cannot update recalls.');
+      return;
+    }
+
+    const newrecall = {
+      accuracy: percent,
+      user_answer: rtx.currentRecall,
+    };
+
+    const token = localStorage.getItem('token');
+    const response = await fetch(`http://localhost:5050/api/v0/recall/${ntx.currentNote.id}`, {
+      method: 'PUT',
+      body: JSON.stringify(newrecall),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to update recall data');
+    }
+  };
+
   return (
-    <div className = {styles.feedback}>
-      <div className = {styles.container}>
+    <div className={styles.feedback}>
+      <div className={styles.container}>
         <h2 className={styles.phase}>Phase 4</h2>
         <h1 className={styles.title}>Feedback</h1>
         <div className={styles.notebook}>
-        <div className={styles.textcontainer}>
-            <div className={styles.text}>feedback from gemini goes here</div>
-        </div>
+          <div className={styles.textcontainer}>
+            <div className={styles.text}>
+              <div>
+                <span className={styles.acc}>Accuracy:</span>
+                {percent !== null ? `${percent}%` : 'Loading...'}
+              </div>
+              <div>{feedback}</div>
+            </div>
+          </div>
         </div>
         <LogoutButton />
-        <div className = {styles.buttons}>
-            <button className={styles.button} onClick={() => navigate("/intermission")}>Repeat</button>
-            <button className={styles.button} onClick={() => navigate("/study")}>I need to study more</button>
-          </div>
+        <div className={styles.buttons}>
+          <button className={styles.button} onClick={() => navigate("/intermission")}>
+            Repeat
+          </button>
+          <button className={styles.button} onClick={() => navigate("/study")}>
+            I need to study more
+          </button>
+          <button className={styles.button} onClick={buttonSubmit} disabled={loading}>
+            Submit Feedback
+          </button>
+        </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Feedback;
