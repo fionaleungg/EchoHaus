@@ -20,8 +20,8 @@ function Landing() {
         >
           <div className={styles.echohaus}>EchoHaus</div>
           <div className={styles.welcome}>
-            forgetting is the best friend of memory.
-            based on the ebbinghaus forgetting curve
+            Forgetting is the best friend of memory.
+            Based on the Ebbinghaus Forgetting Curve
           </div>
           <div className={styles.line}>
             ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
