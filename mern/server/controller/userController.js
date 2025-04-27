@@ -1,5 +1,5 @@
 import db from '../db/connection.js';
-import bcrypt from 'bcrypt';
+const bcrypt = require('bcryptjs');
 
 const collection = db.collection('user');
 
