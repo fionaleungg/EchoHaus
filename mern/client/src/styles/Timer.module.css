@@ -5,9 +5,12 @@
     justify-content: flex-end;
     height: 100vh;
     width: 100vw;
-    background-image: url('../assets/backgroundImage.png');
+    /* background-image: url('../assets/backgroundImage.png'); */
+    /* background-size: contain;  */
+    background-image: url('../assets/fishBackground.png');
+    background-size: cover;
+    background-position: center;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background-size: contain; 
 }
 
 .timestamp {
@@ -18,6 +21,8 @@
   font-size: 1.2em;
   font-weight: 50;
   color: #6c757d;
+  margin-top: 0;
+  /* margin-bottom: 3%; */
 }
 
 .title {
@@ -25,7 +30,7 @@
   font-weight: bold;
   color: #343a40;
   margin: 0;
-  margin-bottom: 2%;
+  margin-bottom: 5%;
 }
 
 .timerWrapper {

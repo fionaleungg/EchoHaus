@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../styles/Login.module.css'
 import circleLogo from '../assets/circleLogo.png'
+import fish from '../assets/fish.png'
 import {useNavigate} from 'react-router-dom';
 
 function Login() {
@@ -48,7 +49,11 @@ function Login() {
       <div className = {styles.login}>
           <div className = {styles.signin}>
             <img className = {styles.circleLogo} src={circleLogo} />
-            <h1 className = {styles.title}>Sign In</h1>
+            <div className = {styles.fishies}>
+              <img className = {styles.fish1} src={fish} />
+              <h1 className = {styles.title}>Sign In</h1>
+              <img className = {styles.fish2} src={fish} />
+            </div>
             <div className = {styles.content}>
                 <input name="email" className = {styles.inputfield} placeholder = "Email" type="email" onChange={handleInputChange}></input>
                 <input name="password" className = {styles.inputfield} placeholder = "Password" type="password" onChange={handleInputChange}></input>

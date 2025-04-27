@@ -5,8 +5,9 @@
     justify-content: flex-end;
     height: 100vh;
     width: 100vw;
-    background-image: url('../assets/backgroundImage.png');
-    background-size: contain; 
+    background-image: url('../assets/fishBackground.png');
+    background-size: cover;
+    background-position: center;
     font-family: 'Plus Jakarta Sans', sans-serif;
     color: black;
 }

@@ -54,7 +54,6 @@ function Timer() {
       <span>
       <input type="text" value={time} onChange={(e) => setTime(e.target.value)}
       className = {styles.minuteInput} placeholder='Time in Minutes'/>
-      minutes
       </span>
       <div className = {complete ? styles.buttonsComplete : styles.buttons}>
         <button className = {styles.button} onClick={() => setPlay(!play)}>{play ? `Pause` : `Start`}</button>
