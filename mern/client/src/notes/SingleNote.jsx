@@ -16,7 +16,7 @@ function SingleNote() {
   const fetchSingleNote = async (event) => {
     const token = localStorage.getItem('token');
     const note_id = ntx.currentNote.id;
-    await fetch(`http://localhost:5050/api/v0/note/${note_id}`, {
+    await fetch(`https://echohaus-backend.onrender.com/api/v0/note/${note_id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

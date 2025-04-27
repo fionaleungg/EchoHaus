@@ -11,7 +11,7 @@ function UploadNotes() {
       name: name,
       text: text
     };
-    await fetch('http://localhost:5050/api/v0/note', {
+    await fetch('https://echohaus-backend.onrender.com/api/v0/note', {
       method: 'POST',
       body: JSON.stringify(content),
       headers: {

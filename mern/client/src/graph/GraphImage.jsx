@@ -34,7 +34,7 @@ const ForgettingCurveChart = () => {
 
   const fetchPrevAttempt = async () => {
     const token = localStorage.getItem('token');
-    const response = await fetch(`http://localhost:5050/api/v0/recall/${ntx.currentNote.id}`, {
+    const response = await fetch(`https://echohaus-backend.onrender.com/api/v0/recall/${ntx.currentNote.id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ const ForgettingCurveChart = () => {
 
   const fetchNoteContent = async () => {
     const token = localStorage.getItem('token');
-    const response = await fetch(`http://localhost:5050/api/v0/note/${ntx.currentNote.id}`, {
+    const response = await fetch(`https://echohaus-backend.onrender.com/api/v0/note/${ntx.currentNote.id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

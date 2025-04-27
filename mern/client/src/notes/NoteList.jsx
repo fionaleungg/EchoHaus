@@ -13,7 +13,7 @@ function NoteList() {
   }, []);
   const fetchNotes = async (event) => {
     const token = localStorage.getItem('token');
-    await fetch('http://localhost:5050/api/v0/note', {
+    await fetch('https://echohaus-backend.onrender.com/api/v0/note', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

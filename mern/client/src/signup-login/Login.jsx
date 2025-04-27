@@ -19,7 +19,7 @@ function Login() {
 
   const login = async () => {
     localStorage.removeItem('token');
-    await fetch(`http://localhost:5050/api/v0/login`, {
+    await fetch(`https://echohaus-backend.onrender.com/api/v0/login`, {
       method: "POST",
       body: JSON.stringify(credentials),
       headers: {

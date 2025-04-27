@@ -32,7 +32,7 @@ function Feedback() {
 
   const fetchPrevAttempt = async () => {
     const token = localStorage.getItem('token');
-    const response = await fetch(`http://localhost:5050/api/v0/recall/${ntx.currentNote.id}`, {
+    const response = await fetch(`https://echohaus-backend.onrender.com/api/v0/recall/${ntx.currentNote.id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ function Feedback() {
 
   const fetchNoteContent = async () => {
     const token = localStorage.getItem('token');
-    const response = await fetch(`http://localhost:5050/api/v0/note/${ntx.currentNote.id}`, {
+    const response = await fetch(`https://echohaus-backend.onrender.com/api/v0/note/${ntx.currentNote.id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -83,7 +83,7 @@ function Feedback() {
     New recall attempt: ${rtx.currentRecall}`;
 
     try {
-      const res = await fetch('http://localhost:5050/api/v0/generate', {
+      const res = await fetch('https://echohaus-backend.onrender.com/api/v0/generate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -131,7 +131,7 @@ function Feedback() {
     };
 
     const token = localStorage.getItem('token');
-    const response = await fetch(`http://localhost:5050/api/v0/recall/${ntx.currentNote.id}`, {
+    const response = await fetch(`https://echohaus-backend.onrender.com/api/v0/recall/${ntx.currentNote.id}`, {
       method: 'PUT',
       body: JSON.stringify(newrecall),
       headers: {
@@ -147,7 +147,7 @@ function Feedback() {
 
   const handleStudy = async () => {
     const token = localStorage.getItem('token');
-    await fetch(`http://localhost:5050/api/v0/recall/num/${ntx.currentNote.id}`, {
+    await fetch(`https://echohaus-backend.onrender.com/api/v0/recall/num/${ntx.currentNote.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
