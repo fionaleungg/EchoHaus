@@ -87,3 +87,8 @@
     max-height: 200px;
     text-align: center;
 }
+
+.acc {
+    font-weight: bold;
+    padding: 10px;
+}
