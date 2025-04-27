@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
+import NoteContext from '../notes/NoteContext'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,7 +12,6 @@ import {
   Legend,
 } from 'chart.js';
 
-// Register necessary components for Chart.js
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -23,10 +23,31 @@ ChartJS.register(
 );
 
 const ForgettingCurveChart = () => {
-  const [recalls, setRecalls] = React.useState([]);
+  const ntx = React.useContext(NoteContext);
+  const [recalls, setRecalls] = useState([]);
+  const [firstrecall, setFirstRecall] = useState("");
+
+  useEffect(() => {
+    fetchPrevAttempt();
+    fetchNoteContent();
+  }, []);
+
   const fetchPrevAttempt = async () => {
     const token = localStorage.getItem('token');
     const response = await fetch(`http://localhost:5050/api/v0/recall/${ntx.currentNote.id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
+    });
+    const json = await response.json();
+    setRecalls(json.allarray || []);
+  };
+
+  const fetchNoteContent = async () => {
+    const token = localStorage.getItem('token');
+    const response = await fetch(`http://localhost:5050/api/v0/note/${ntx.currentNote.id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -34,55 +55,47 @@ const ForgettingCurveChart = () => {
       },
     });
     const json = await response.json();
-    const latestArr = json.allarray[json.allarray.length - 1];
-    const latestAcc = latestArr.accuracy[latestArr.accuracy.length - 1];
-    const latestAns = latestArr.user_answer[latestArr.user_answer.length - 1];
-    setAttemptAcc({ prev_accuracy: latestAcc, prev_attempt: latestAns });
+    setFirstRecall(json.time_uploaded);
   };
-  // Initial study session data (first round) - Time since the note was uploaded
-  const [timeArray1, setTimeArray1] = useState([0, 12, 24, 48, 72]); // Time in hours since the note was uploaded
-  const [accuracyArray1, setAccuracyArray1] = useState([100, 85, 75, 60, 50]); // First session accuracies
 
-  // Second study session data (after revisiting the notes) - Time since the first upload
-  const [timeArray2, setTimeArray2] = useState([96, 108, 120, 144, 168]); // Time since first upload in hours
-  const [accuracyArray2, setAccuracyArray2] = useState([100, 90, 85, 80, 75]); // Second session accuracies (improved after reviewing)
+  const firstTimeRecalled = firstrecall;
+  // Dynamically build datasets
+  const datasets = (recalls || []).map((session, sessionIndex) => {
+    const sessionData = (session.accuracy || []).map((_, i) => {
+  
+  if (!firstTimeRecalled) return { data: [] };
+      const timeRecalled = session.time_recalled?.[i];
+    
+    // Calculate the time difference in hours between the current timeRecalled and the first timeRecalled
+    const timeDiffInHours = timeRecalled ? (new Date(timeRecalled).getTime() - new Date(firstTimeRecalled).getTime()) / (1000 * 60 * 60) : null;
 
-  // Prepare data for the chart (pair time and accuracy for both sessions)
-  const data1 = timeArray1.map((time, index) => ({
-    x: time,
-    y: accuracyArray1[index],
-  }));
+    return {
+      x: timeDiffInHours,
+        y: parseFloat(session.accuracy[i]) || 0,
+      };
+    }).filter(point => point.x !== null);
 
-  const data2 = timeArray2.map((time, index) => ({
-    x: time,
-    y: accuracyArray2[index],
-  }));
+    const colors = [
+      'rgb(75, 192, 192)',
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 206, 86)',
+      'rgb(153, 102, 255)',
+      'rgb(255, 159, 64)',
+    ];
 
-  // Chart.js datasets configuration for both lines
-  const datasets = [
-    {
-      label: 'First Study Session (Original)',
-      data: data1,
+    return {
+      label: `Session ${sessionIndex + 1}`,
+      data: sessionData,
       fill: false,
-      borderColor: 'rgb(75, 192, 192)', // First line color
+      borderColor: colors[sessionIndex % colors.length],
       tension: 0.1,
       pointRadius: 5,
-      pointBackgroundColor: 'rgb(75, 192, 192)', // Color for points
+      pointBackgroundColor: colors[sessionIndex % colors.length],
       borderWidth: 2,
-    },
-    {
-      label: 'Second Study Session (After Review)',
-      data: data2,
-      fill: false,
-      borderColor: 'rgb(255, 99, 132)', // Second line color (a different color for differentiation)
-      tension: 0.1,
-      pointRadius: 5,
-      pointBackgroundColor: 'rgb(255, 99, 132)', // Color for points in the second line
-      borderWidth: 2,
-    },
-  ];
+    };
+  });
 
-  // Chart.js options
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -91,7 +104,7 @@ const ForgettingCurveChart = () => {
         type: 'linear',
         title: {
           display: true,
-          text: 'Time Since First Upload (hours)', // Show the time since the first upload
+          text: 'Time Recalled (hours)', // Time in hours
         },
       },
       y: {
@@ -99,7 +112,7 @@ const ForgettingCurveChart = () => {
         max: 100,
         title: {
           display: true,
-          text: 'Accuracy Percentage',
+          text: 'Accuracy (%)',
         },
       },
     },
@@ -110,21 +123,13 @@ const ForgettingCurveChart = () => {
       tooltip: {
         callbacks: {
           label: function (tooltipItem) {
-            return `${tooltipItem.raw.y.toFixed(2)}%`; // Show percentage with two decimal points
+            return `${tooltipItem.raw.y.toFixed(2)}%`;
           },
         },
       },
     },
     layout: {
-      padding: {
-        top: 20,
-        left: 20,
-        right: 20,
-        bottom: 20,
-      },
-    },
-    chartArea: {
-      backgroundColor: 'white',
+      padding: 20,
     },
   };
 
