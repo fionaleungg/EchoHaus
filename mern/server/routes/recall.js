@@ -9,6 +9,11 @@ router.put('/:note_id', auth.check, async (req, res) => {
   res.status(201).send(recallres);
 });
 
+router.put('/num/:note_id', auth.check, async (req, res) => {
+  const recallres = await recall.putNum(req, req.params.note_id);
+  res.status(201).send(recallres);
+});
+
 router.get('/:note_id', auth.check, async (req, res) => {
   const recalls = await recall.get(req, req.params.note_id);
   res.status(200).send(recalls);
