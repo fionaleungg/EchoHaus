@@ -55,10 +55,11 @@
   border: none;
   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
   color: black;
-  font-weight: bold;
+  font-weight: 600;
   text-align: center;
   font-size: 120%;
   width: 100%;
+  outline: none;
 }
 
 .buttons {
@@ -67,6 +68,7 @@
   justify-content: space-evenly;
   width: 60%;
   margin-bottom: 3%;
+  
 }
 
 .buttonsComplete {
@@ -84,11 +86,22 @@
   color: #343a40;
   font-size: 1em;
   cursor: pointer;
-  transition: background-color 0.3s ease;
   margin-top: 10px;
   width: 20%;
   height: 80%;
   border-radius: 100px;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background-color: #8ab6df;
+  transform: scale(1.05);
+}
+
+.button:focus {
+  border: none;
+  outline: none;
 }
 
 .recall {
@@ -98,6 +111,8 @@
   align-items: center;
   color: black;
   width: 100%;
+  border-radius: 100px;
+  
 }
 
 .recallButton {
@@ -108,8 +123,14 @@
   color: #343a40;
   font-size: 1em;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  border: none;
+  transition: all 0.3s ease;
   margin-top: 10px;
   width: 20%;
   height: 50%;
+}
+
+.recallButton:hover {
+  background-color: #8ab6df;
+  transform: scale(1.05);
 }

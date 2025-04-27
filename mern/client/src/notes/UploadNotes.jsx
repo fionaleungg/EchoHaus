@@ -47,7 +47,7 @@ function UploadNotes() {
           <textarea
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder="Upload here, hitting submit will bring you to 'My Notes' page"
+            placeholder="Paste notes here"
             className={styles.textarea}
           />
         </div>

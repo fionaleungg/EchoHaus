@@ -58,8 +58,13 @@
 
   .studyname {
     color: black;
-    margin-top: 10px;
     font-weight: bold;
+    margin-top: 20px;
+    width: 50%;
+    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: auto;
+    height: 30px;
   }
   
   .logo:hover {

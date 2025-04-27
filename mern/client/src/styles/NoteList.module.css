@@ -49,15 +49,32 @@
     position: fixed;
     bottom: 40px;
     right: 40px;
-}
+    transform: scaleX(-1);
+    border: none;
+    transition: all 0.3s ease;
+  
+  }
+  
+  .addButton:hover {
+    background-color: #8ab6df;
+    transform: scaleX(-1) scale(1.05);
+    color: #e0e7ed;
+  }
+
+  .addButon:focus {
+    border: none;
+    outline: none;
+  } 
 
 .note {
-    padding: 10px;
+    margin-top: 10px;
+    padding-top: 5px;
+    border-radius: 5px;
     transition: background 0.3s;
-    border-radius: 999px;
-
+    border-bottom: 2px solid #f9c7c7;
+    font-weight: 600;
 }
 .note:hover {
-    background-color: #D0E3F5;
+    background-color: #f1f8ff;
     cursor: pointer;
 }
