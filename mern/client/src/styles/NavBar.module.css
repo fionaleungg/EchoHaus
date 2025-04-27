@@ -62,3 +62,7 @@
     font-weight: bold;
   }
   
+  .logo:hover {
+    background-color: #D0E3F5;
+    cursor: pointer;
+}

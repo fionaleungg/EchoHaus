@@ -114,7 +114,6 @@ const ForgettingCurveChart = () => {
 
   return (
     <div style={{ width: '100%', height: '400px' }}>
-      <h2>Forgetting Curve - First and Second Study Sessions</h2>
       <Line data={{ datasets }} options={options} />
     </div>
   );

@@ -13,7 +13,7 @@ import Timer from './Timer';
 import RecallContext from './recall/RecallContext'
 import RecallInput from './recall/RecallInput';
 import Feedback from './feedback/Feedback';
-import ForgettingCurveChart from './graph/GraphImage';
+import ForgettingCurveChart from './graph/ForgettingCurve';
 import NoteContext from './notes/NoteContext';
 
 function App() {
@@ -25,9 +25,6 @@ function App() {
         <NoteContext.Provider value={{currentNote, setCurrentNote}}>
           <Routes>
             <Route path="/" element={<Landing />} />
-            <Route path="/graph" element={
-              <ForgettingCurveChart />
-            } />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/mynotes" element={
@@ -64,6 +61,12 @@ function App() {
               <>
                 <NavBar />
                 <Feedback />
+              </>
+            } />
+            <Route path="/forgettingcurve" element={
+              <>
+                <NavBar />
+                <ForgettingCurveChart />
               </>
             } />
           </Routes>
