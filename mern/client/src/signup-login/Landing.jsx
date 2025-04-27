@@ -34,7 +34,7 @@ function Landing() {
             <h4 className={styles.smallerechohaus}>EchoHaus</h4>
           </div>
           <div className={styles.buttons}>
-            <button className={styles.signin}>
+            <button className={styles.signin} onClick={() => navigate("/wiki")}>
               How It Works
             </button>
             <button className={styles.signin} onClick={() => navigate("/login")}>

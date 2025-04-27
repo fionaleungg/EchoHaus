@@ -15,6 +15,7 @@ import RecallInput from './recall/RecallInput';
 import Feedback from './feedback/Feedback';
 import ForgettingCurveChart from './graph/ForgettingCurve';
 import NoteContext from './notes/NoteContext';
+import Wiki from './signup-login/Wiki';
 
 function App() {
   const [currentRecall, setCurrentRecall] = React.useState("");
@@ -25,6 +26,7 @@ function App() {
         <NoteContext.Provider value={{currentNote, setCurrentNote}}>
           <Routes>
             <Route path="/" element={<Landing />} />
+            <Route path="/wiki" element={<Wiki />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/mynotes" element={
