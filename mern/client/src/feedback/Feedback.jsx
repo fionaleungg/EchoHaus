@@ -179,7 +179,7 @@ function Feedback() {
             <div className={styles.text}>
               <div>
                 <span className={styles.acc}>Accuracy:</span>
-                {percent !== null ? `${percent}%` : 'Loading...'}
+                {percent !== null ? `${percent}%` : null}
               </div>
               <div>{feedback}</div>
             </div>
@@ -194,7 +194,7 @@ function Feedback() {
             I need to study more
           </button>
           <button className={styles.button} onClick={buttonSubmit} disabled={loading}>
-            Submit Feedback
+            Show feedback
           </button>
         </div>
       </div>
