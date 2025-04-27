@@ -5,10 +5,10 @@
     justify-content: center;
     height: 100vh;
     width: 100vw;
-    background-image: url('../assets/backgroundImage.png');
-    background-size: contain; 
+    background-image: url('../assets/gradientBackground.png');
+    background-size: cover;
+    background-position: center;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    /* font-family: sans-serif; */
 }
 
 .title {
@@ -26,6 +26,25 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
     border-radius: 20px;
     font-size: 70%;
+}
+
+.fish2{
+    width: 85px;
+    height: 85px;
+  }
+
+.fish1 {
+  width: 60px;
+  height: 60px;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.fishies {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
 }
 
 .inputfield {

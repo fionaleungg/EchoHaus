@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../styles/Signup.module.css'
 import circleLogo from '../assets/circleLogo.png'
+import fish from '../assets/fish.png'
 
 function Signup() {
   const [credentials, setCredentials] =
@@ -37,7 +38,11 @@ function Signup() {
       <div className = {styles.signup}>
         <div className = {styles.card}>
         <img className = {styles.circleLogo} src={circleLogo} />
-          <h1 className = {styles.title}>Sign Up</h1>
+          <div className = {styles.fishies}>
+            <img className = {styles.fish1} src={fish} />
+            <h1 className = {styles.title}>Sign In</h1>
+            <img className = {styles.fish2} src={fish} />
+          </div>
           <div className = {styles.content}>
             <input className = {styles.inputfield} name="email" placeholder = "Email" type="email" onChange={handleInputChange}></input>
             <input className = {styles.inputfield} name="name" placeholder = "Name" type="text" onChange={handleInputChange}></input>
