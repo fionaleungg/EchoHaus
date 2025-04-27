@@ -40,7 +40,7 @@ function Signup() {
         <img className = {styles.circleLogo} src={circleLogo} />
           <div className = {styles.fishies}>
             <img className = {styles.fish1} src={fish} />
-            <h1 className = {styles.title}>Sign In</h1>
+            <h1 className = {styles.title}>Sign Up</h1>
             <img className = {styles.fish2} src={fish} />
           </div>
           <div className = {styles.content}>
