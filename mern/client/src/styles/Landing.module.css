@@ -6,54 +6,92 @@
     justify-content: center;
     height: 100vh;
     width: 100vw;
-    background-image: url('../assets/backgroundImage.png');
+    background-image: url('../assets/gradientBackground.png');
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background-size: contain; 
+    background-size: cover;
+    background-position: center;
   }
   
   .title {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
     margin-bottom: 40px;
+    margin-top: 30px;
+  }
+
+  .line {
+    color: rgb(77, 74, 74);
+    font-weight: bold;
   }
   
   .welcome {
     font-size: 1.5em;
     color: #6c757d;
     margin-bottom: 5px;
+    text-align: right;
+    width: 100%;
   }
   
   .echohaus {
-    font-size: 2.5em;
+    font-size: 3.5em;
     font-weight: bold;
-    color: #343a40;
+    color: black;
+    text-align: right;
   }
   
   .notebook {
-    width: 200px; /* Adjust as needed */
+    width: 350px;
     height: auto;
     margin-right: 15%;
-  }
-  
-  .buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .signin {
-    background-color: #AFCAE4;
-    color: #343a40;
-    border-radius: 50px;
-    padding: 12px 30px;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    margin-top: 30px;
   }
   
   .signin:hover {
     background-color: #dee2e6;
+    text-decoration: underline;
+  }
+
+  .right {
+    width: 30%;
+  }
+
+  .buttons {
+    position: absolute; /* This will allow the buttons to be positioned anywhere */
+    top: 20px; /* Adjust as needed to position it at the top */
+    right: 20px; /* Adjust as needed to position it to the right */
+    color: black;
+  }
+  
+  .signin {
+    background: none;
+    border: none;
+    color: inherit;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px;
+    margin: 5px 0;
+  }
+  
+  .logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #394249;
+    width: 10%;
+  }
+
+  .circleLogo {
+    width: 25%;
+    height: 25%;
+  }
+
+  .topBar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
